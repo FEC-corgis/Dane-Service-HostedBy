@@ -1,7 +1,7 @@
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../data/db');
-const { name, address } = require('faker');
 const { abouts } = require('../data/mock/About');
+const { names } = require('../data/mock/Names');
 
 class Host extends Model {}
 
@@ -33,11 +33,6 @@ Host.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
-    livesIn: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      allowNull: true,
-    },
     joinedOn: {
       type: DataTypes.DATE,
       allowNull: false,
@@ -59,13 +54,12 @@ Host.init(
       const picId = i <= 50 ? i : i - 50;
 
       await Host.create({
-        name: name.firstName(),
+        name: names[i],
         about: abouts[i],
         numberOfReviews: Math.floor(Math.random() * 1000),
         identityVerified: Math.floor(Math.random() * 2) === 0 ? true : false,
         isSuperhost: Math.floor(Math.random() * 2) === 0 ? true : false,
         avatar: `https://randomuser.me/api/portraits/${sex}/${picId}.jpg`,
-        livesIn: `${address.city()}, ${address.state()}`,
         joinedOn: new Date().toDateString(),
       });
     }
