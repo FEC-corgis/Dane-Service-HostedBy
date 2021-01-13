@@ -23,6 +23,10 @@ HostedBy.init(
       allowNull: false,
       defaultValue: false,
     },
+    hostId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     propertyId: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -46,7 +50,8 @@ HostedBy.init(
         responseTime: Math.floor(Math.random() * 168), // max hours within a week
         responseRate: Math.floor(Math.random() * 100),
         showLanguage: Math.floor(Math.random() * 2) === 0 ? true : false,
-        propertyId: Math.floor(Math.random() * 100),
+        hostId: i + 1,
+        propertyId: i + 1,
       });
     }
   }
