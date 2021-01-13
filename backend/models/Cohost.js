@@ -27,7 +27,7 @@ CoHost.init(
   if (!cohosts.length) {
     for (let i = 0; i < 25; i++) {
       await CoHost.create({
-        hostId: Math.floor(Math.random() * 100),
+        hostId: 100 + Math.floor(Math.random() * 25),
         hostedById: Math.floor(Math.random() * 100),
       });
     }
