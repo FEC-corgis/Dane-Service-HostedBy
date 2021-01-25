@@ -1,4 +1,3 @@
-require('./models/index');
 const express = require('express');
 const { join } = require('path');
 const app = express();
@@ -9,11 +8,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.get('/api', (req, res) => {
-  res.json({ message: 'okay!' });
+    res.json({ message: 'okay!' });
 });
 
 app.get('*', (req, res) => {
-  res.sendFile(join(__dirname, '..', 'frontend', 'dist', 'index.html'));
+    res.sendFile(join(__dirname, '..', 'frontend', 'dist', 'index.html'));
 });
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
