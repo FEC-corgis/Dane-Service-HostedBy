@@ -10,18 +10,4 @@ const sequelize = new Sequelize(
     }
 );
 
-// (async () => {
-//     try {
-//         await connection
-//             .promise()
-//             .execute('DROP DATABASE IF EXISTS `HostedBy`');
-//         await connection.promise().execute('CREATE DATABASE `HostedBy`');
-//         connection.destroy();
-
-//         await sequelize.authenticate();
-//     } catch (error) {
-//         console.log('ERROR IN db.js', error);
-//     }
-// })();
-
 module.exports = sequelize;
