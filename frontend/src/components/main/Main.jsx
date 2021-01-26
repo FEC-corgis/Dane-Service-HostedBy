@@ -3,7 +3,7 @@ import MainContainer from './styled-components/MainContainer';
 import Border from './styled-components/Border';
 
 const Main = ({ children }) => (
-    <MainContainer>
+    <MainContainer data-testid={'main'}>
         <Border>{children}</Border>
     </MainContainer>
 );
