@@ -7,6 +7,7 @@ describe('GET /api/hostedby/:id', () => {
 
         expect(res.body.hostedBy.id).toBe(1);
         expect(res.body.hostedBy.Host.id).toBe(1);
+        expect(res.status).toBe(200);
     });
 
     test('should include an array of CoHosts', async () => {
