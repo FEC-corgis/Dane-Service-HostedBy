@@ -20,4 +20,13 @@ describe('GET /api/hostedby/:id', () => {
 
         expect(res.body.languagesSpoken.length).toBeGreaterThanOrEqual(0);
     });
+
+    test('should response with status code 404 if no HostedBy instance with an ID is found', async () => {
+        const res = await request(app).get('/api/hostedby/1000');
+
+        expect(res.status).toBe(404);
+        expect(res.body.message).toBe(
+            'Information for this property could not be found'
+        );
+    });
 });
