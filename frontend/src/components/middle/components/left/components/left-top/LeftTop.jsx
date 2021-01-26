@@ -1,29 +1,29 @@
 import React from 'react';
-import First from './styled-components/First';
-import Next from './styled-components/Next';
+import Badge from './styled-components/Badge';
 import LeftTopContainer from './styled-components/LeftTopContainer';
+import SuperHost from '../../../../../icons/SuperHost';
 import { MdVerifiedUser } from 'react-icons/md';
 import { AiTwotoneStar } from 'react-icons/ai';
 
 const LeftTop = ({ host }) => (
     <LeftTopContainer>
         {host.numberOfReviews && (
-            <First>
+            <Badge first={true}>
                 <AiTwotoneStar className={'icon'} />
                 <span>{host.numberOfReviews} Reviews</span>
-            </First>
+            </Badge>
         )}
         {host.identityVerified && (
-            <Next>
+            <Badge>
                 <MdVerifiedUser className={'icon'} />
                 <span>Identity verified</span>
-            </Next>
+            </Badge>
         )}
         {host.isSuperhost && (
-            <Next>
-                <MdVerifiedUser className={'icon'} />
+            <Badge>
+                <SuperHost />
                 <span>Superhost</span>
-            </Next>
+            </Badge>
         )}
     </LeftTopContainer>
 );
