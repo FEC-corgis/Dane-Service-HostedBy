@@ -1,0 +1,13 @@
+{
+    "plugins": [
+        "testing-library",
+        "jest-dom"
+    ],
+    "extends": [
+        "plugin:testing-library/recommended",
+        "plugin:testing-library/react",
+        "plugin:jest-dom/recommended",
+        "react-app"
+    ],
+    "parser": "babel-eslint"
+}
