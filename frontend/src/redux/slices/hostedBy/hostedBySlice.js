@@ -45,6 +45,7 @@ const hostedBySlice = createSlice({
 });
 
 export const { setHostedByState } = hostedBySlice.actions;
+export const getHostedByState = (state) => state.hostedBy;
 
 export const handleGetHostedByData = (id) => async (dispatch) => {
     try {
