@@ -6,7 +6,6 @@ import {
     getHostedByState,
     handleGetHostedByData,
 } from './redux/slices/hostedBy/hostedBySlice';
-import { convertDate } from './constants/functions/convertDate';
 
 const App = ({ match: { params } }) => {
     const dispatch = useDispatch();
@@ -15,11 +14,11 @@ const App = ({ match: { params } }) => {
 
     useEffect(() => {
         dispatch(handleGetHostedByData(id));
-    });
+    }, [id, dispatch]);
     return (
-        host && (
+        host.name && (
             <Main>
-                <Top name={host.name} joinDate={convertDate(host.joinedOn)} />
+                <Top host={host} />
             </Main>
         )
     );

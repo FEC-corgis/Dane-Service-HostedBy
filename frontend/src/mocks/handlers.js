@@ -1,4 +1,4 @@
-import mockData from './mockData';
+import { mockData } from './mockData';
 import { rest } from 'msw';
 
 export const handlers = [
