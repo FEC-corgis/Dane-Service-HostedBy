@@ -42,5 +42,8 @@ module.exports = {
         }),
         new MiniCssExtractPlugin(),
     ],
+    resolve: {
+        extensions: ['.js', '.jsx'],
+    },
     devtool: 'source-map',
 };

@@ -1,5 +1,5 @@
-import React from 'react';
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
+import Main from './components/main/Main';
 import { useDispatch } from 'react-redux';
 import { handleGetHostedByData } from './redux/slices/hostedBy/hostedBySlice';
 
@@ -11,9 +11,9 @@ const App = ({ match: { params } }) => {
         dispatch(handleGetHostedByData(id));
     });
     return (
-        <div>
+        <Main>
             <h1>Hosted By Service</h1>
-        </div>
+        </Main>
     );
 };
 
