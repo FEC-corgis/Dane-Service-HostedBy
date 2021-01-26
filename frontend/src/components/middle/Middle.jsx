@@ -1,7 +1,7 @@
 import React from 'react';
 import MiddleContainer from './styled-components/MiddleContainer';
-import Left from './styled-components/Left';
-import Right from './styled-components/Right';
+import Right from './components/right/Right';
+import Left from './components/left/Left';
 
 const Middle = () => (
     <MiddleContainer>

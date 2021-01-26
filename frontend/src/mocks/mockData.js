@@ -13,8 +13,8 @@ export const mockData = [
                 name: 'Avery',
                 about: ' Id leo in vitae turpis massa sed elementum tempus',
                 numberOfReviews: 751,
-                identityVerified: false,
-                isSuperhost: false,
+                identityVerified: true,
+                isSuperhost: true,
                 avatar: 'https://randomuser.me/api/portraits/women/34.jpg',
                 joinedOn: '2021-01-25T08:00:00.000Z',
                 HostLanguages: [
