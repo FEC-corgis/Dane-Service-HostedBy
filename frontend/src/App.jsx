@@ -3,11 +3,12 @@ import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { handleGetHostedByData } from './redux/slices/hostedBy/hostedBySlice';
 
-const App = () => {
+const App = ({ match: { params } }) => {
     const dispatch = useDispatch();
+    const { id } = params;
 
     useEffect(() => {
-        dispatch(handleGetHostedByData(1));
+        dispatch(handleGetHostedByData(id));
     });
     return (
         <div>
