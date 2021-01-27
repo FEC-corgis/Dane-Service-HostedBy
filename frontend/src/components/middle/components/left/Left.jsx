@@ -10,7 +10,7 @@ const Left = () => {
     return (
         <LeftBox>
             <LeftTop host={host} />
-            <LeftMiddle />
+            <LeftMiddle about={host.about} />
         </LeftBox>
     );
 };

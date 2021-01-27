@@ -11,7 +11,7 @@ export const mockData = [
             Host: {
                 id: 85,
                 name: 'Avery',
-                about: ' Id leo in vitae turpis massa sed elementum tempus',
+                about: 'Id leo in vitae turpis massa sed elementum tempus',
                 numberOfReviews: 751,
                 identityVerified: true,
                 isSuperhost: true,
@@ -53,7 +53,7 @@ export const mockData = [
                 id: 14,
                 name: 'Maxim',
                 about:
-                    ' Diam phasellus vestibulum lorem sed risus ultricies tristique nulla',
+                    'Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec. Est sit amet facilisis magna etiam. Interdum varius sit amet mattis vulputate enim nulla aliquet. Velit laoreet id donec ultrices tincidunt arcu non. Elementum tempus egestas sed sed risus pretium quam vulputate. Et pharetra pharetra massa massa ultricies mi quis hendrerit.',
                 numberOfReviews: 610,
                 identityVerified: false,
                 isSuperhost: false,

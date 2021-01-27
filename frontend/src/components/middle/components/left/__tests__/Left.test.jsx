@@ -48,14 +48,12 @@ describe('LeftMiddle: rendering "about" info from user', () => {
         );
 
         expect(
-            getByText(
-                'Phasellus faucibus scelerisque eleifend donec pretium vulputate sapien nec. Est sit amet facilisis magna etiam. Interdum varius sit amet mattis vulputate enim nulla aliquet.'
-            )
+            getByText('Id leo in vitae turpis massa sed elementum tempus')
         ).toBeInTheDocument();
     });
 
-    test('should only show "read more" button if text is more than 220 chars', () => {
-        store.dispatch(setHostedByState(mockData[0].hostedBy));
+    test('should only show "read more" button if text is more than 29 words', () => {
+        store.dispatch(setHostedByState(mockData[1].hostedBy));
 
         const { getByRole } = render(
             <Provider store={store}>
@@ -67,20 +65,23 @@ describe('LeftMiddle: rendering "about" info from user', () => {
     });
 
     test('"read more" button should disappear and show more text on click', () => {
-        store.dispatch(setHostedByState(mockData[0].hostedBy));
+        store.dispatch(setHostedByState(mockData[1].hostedBy));
 
-        const { getByRole } = render(
+        const { getByText, getByRole, queryByText } = render(
             <Provider store={store}>
                 <Left />
             </Provider>
         );
 
         const readMoreBtn = getByRole('button', { name: 'read more' });
+        const about = mockData[1].hostedBy.Host.about;
 
         expect(readMoreBtn).toBeInTheDocument();
+        expect(queryByText(about)).not.toBeInTheDocument();
+
         userEvent.click(readMoreBtn);
 
         expect(readMoreBtn).not.toBeInTheDocument();
-        expect(mockData[0].hostedBy.Host.about).toBeInTheDocument();
+        expect(getByText(about)).toBeInTheDocument();
     });
 });
