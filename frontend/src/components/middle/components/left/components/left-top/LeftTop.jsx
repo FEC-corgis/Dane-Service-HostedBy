@@ -10,19 +10,19 @@ const LeftTop = ({ host }) => (
         {host.numberOfReviews && (
             <Badge first={true}>
                 <AiTwotoneStar className={'icon'} />
-                <span>{host.numberOfReviews} Reviews</span>
+                <span className={'font'}>{host.numberOfReviews} Reviews</span>
             </Badge>
         )}
         {host.identityVerified && (
             <Badge>
                 <MdVerifiedUser className={'icon'} />
-                <span>Identity verified</span>
+                <span className={'font'}>Identity verified</span>
             </Badge>
         )}
         {host.isSuperhost && (
             <Badge>
                 <SuperHost />
-                <span>Superhost</span>
+                <span className={'font'}>Superhost</span>
             </Badge>
         )}
     </LeftTopContainer>
