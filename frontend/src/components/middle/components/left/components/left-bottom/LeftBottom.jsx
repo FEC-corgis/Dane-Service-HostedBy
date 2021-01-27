@@ -1,5 +1,5 @@
 import React from 'react';
-import LeftMiddleBox from './styled-components/LeftMiddleBox';
+import LeftMiddleBox from './styled-components/LeftBottomBox';
 import DuringYourStay from './components/during-your-stay/DuringYourStay';
 import Superhost from './components/superhost/Superhost';
 import About from './components/about/About';
