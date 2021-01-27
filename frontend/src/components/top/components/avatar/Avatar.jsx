@@ -4,10 +4,10 @@ import AvatarImg from './styled-components/AvatarImg';
 import AvatarMedal from './styled-components/AvatarMedal';
 import medal from './medal.svg';
 
-const Avatar = ({ avatar }) => (
+const Avatar = ({ avatar, superHost }) => (
     <AvatarContainer>
         <AvatarImg src={avatar} alt={'host'} />
-        <AvatarMedal src={medal} />
+        {superHost && <AvatarMedal src={medal} />}
     </AvatarContainer>
 );
 
