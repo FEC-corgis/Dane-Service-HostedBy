@@ -1,32 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import About from './styled-components/About';
-import ReadMore from './components/read-more/ReadMore';
+import React from 'react';
 import LeftMiddleBox from './styled-components/LeftMiddleBox';
+import DuringYourStay from './components/during-your-stay/DuringYourStay';
+import Superhost from './components/superhost/Superhost';
+import About from './components/about/About';
 
-const LeftMiddle = (props) => {
-    const [about, setAbout] = useState('');
-    const [showButton, setShowButton] = useState(true);
-
-    useEffect(() => {
-        if (props.about.length <= 220) {
-            setAbout(props.about);
-            setShowButton(false);
-        } else {
-            setAbout(`${props.about.split(' ').splice(0, 29).join(' ')}...`);
-        }
-    }, [props.about]);
-
-    const handleClick = () => {
-        setAbout(props.about);
-        setShowButton(false);
-    };
-
-    return (
-        <LeftMiddleBox>
-            <About className={'font'}>{about}</About>
-            {showButton && <ReadMore handleClick={handleClick} />}
-        </LeftMiddleBox>
-    );
-};
+const LeftMiddle = (props) => (
+    <LeftMiddleBox>
+        <About about={props.about} />
+        <DuringYourStay duringYourStay={props.duringYourStay} />
+        {props.isSuperhost && <Superhost name={props.name} />}
+    </LeftMiddleBox>
+);
 
 export default LeftMiddle;

@@ -37,7 +37,7 @@ describe('LeftTop: displaying badges dynamically', () => {
     });
 });
 
-describe('LeftMiddle: rendering "about" info from user', () => {
+describe('LeftMiddle: rendering "about" & "duringYourStay" info from user', () => {
     test('should pass about information as props and render', () => {
         store.dispatch(setHostedByState(mockData[0].hostedBy));
 
@@ -47,33 +47,33 @@ describe('LeftMiddle: rendering "about" info from user', () => {
             </Provider>
         );
 
-        expect(
-            getByText('Id leo in vitae turpis massa sed elementum tempus')
-        ).toBeInTheDocument();
+        const about = 'Id leo in vitae turpis massa sed elementum tempus';
+        expect(getByText(about)).toBeInTheDocument();
     });
 
     test('should only show "read more" button if text is more than 29 words', () => {
         store.dispatch(setHostedByState(mockData[1].hostedBy));
 
-        const { getByRole } = render(
+        const { getAllByRole } = render(
             <Provider store={store}>
                 <Left />
             </Provider>
         );
 
-        expect(getByRole('button', { name: 'read more' })).toBeInTheDocument();
+        const readMoreBtn = getAllByRole('button', { name: 'read more' })[0];
+        expect(readMoreBtn).toBeInTheDocument();
     });
 
     test('"read more" button should disappear and show more text on click', () => {
         store.dispatch(setHostedByState(mockData[1].hostedBy));
 
-        const { getByText, getByRole, queryByText } = render(
+        const { getByText, getAllByRole, queryByText } = render(
             <Provider store={store}>
                 <Left />
             </Provider>
         );
 
-        const readMoreBtn = getByRole('button', { name: 'read more' });
+        const readMoreBtn = getAllByRole('button', { name: 'read more' })[0];
         const about = mockData[1].hostedBy.Host.about;
 
         expect(readMoreBtn).toBeInTheDocument();
@@ -83,5 +83,52 @@ describe('LeftMiddle: rendering "about" info from user', () => {
 
         expect(readMoreBtn).not.toBeInTheDocument();
         expect(getByText(about)).toBeInTheDocument();
+    });
+
+    test('"read more" button should show full description of "during your stay" section', () => {
+        store.dispatch(setHostedByState(mockData[1].hostedBy));
+
+        const { getByText, getAllByRole, queryByText } = render(
+            <Provider store={store}>
+                <Left />
+            </Provider>
+        );
+
+        const readMoreBtn = getAllByRole('button', { name: 'read more' })[1];
+        const duringYourStay = mockData[1].hostedBy.duringYourStay;
+
+        expect(readMoreBtn).toBeInTheDocument();
+        expect(queryByText(duringYourStay)).not.toBeInTheDocument();
+
+        userEvent.click(readMoreBtn);
+
+        expect(readMoreBtn).not.toBeInTheDocument();
+        expect(getByText(duringYourStay)).toBeInTheDocument();
+    });
+});
+
+describe('LeftMidde: Superhost conditional rendering', () => {
+    test('should display Superhost description when host is a Superhost', () => {
+        store.dispatch(setHostedByState(mockData[0].hostedBy));
+
+        const { getByText } = render(
+            <Provider store={store}>
+                <Left />
+            </Provider>
+        );
+
+        expect(getByText('Avery is a Superhost')).toBeInTheDocument();
+    });
+
+    test('should NOT display Superhost description when host is a Superhost', () => {
+        store.dispatch(setHostedByState(mockData[1].hostedBy));
+
+        const { queryByText } = render(
+            <Provider store={store}>
+                <Left />
+            </Provider>
+        );
+
+        expect(queryByText('Maxim is a Superhost')).not.toBeInTheDocument();
     });
 });
