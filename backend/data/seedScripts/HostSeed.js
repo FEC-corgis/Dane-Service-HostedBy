@@ -1,6 +1,6 @@
 const { Host } = require('../../models');
-const { abouts } = require('../mock/About');
 const { names } = require('../mock/Names');
+const { abouts, long } = require('../mock/About');
 
 module.exports = (async function () {
     await Host.sync({ force: true });
@@ -11,7 +11,7 @@ module.exports = (async function () {
 
         await Host.create({
             name: names[i],
-            about: abouts[i],
+            about: i === 25 ? long : abouts[i],
             numberOfReviews: Math.floor(Math.random() * 1000),
             identityVerified:
                 Math.floor(Math.random() * 2) === 0 ? true : false,

@@ -10,7 +10,7 @@ Host.init(
             allowNull: false,
         },
         about: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(1000),
             allowNull: false,
         },
         numberOfReviews: {
