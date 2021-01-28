@@ -9,7 +9,7 @@ import { mockData } from '../../../../../mocks/mockData';
 
 describe('LeftTop: displaying badges dynamically', () => {
     test('should display identity and superhost badges', () => {
-        store.dispatch(setHostedByState(mockData[0].hostedBy));
+        store.dispatch(setHostedByState(mockData[0]));
 
         const { getByText } = render(
             <Provider store={store}>
@@ -23,7 +23,7 @@ describe('LeftTop: displaying badges dynamically', () => {
     });
 
     test('should NOT display identity and superhost badges', () => {
-        store.dispatch(setHostedByState(mockData[1].hostedBy));
+        store.dispatch(setHostedByState(mockData[1]));
 
         const { getByText, queryByText } = render(
             <Provider store={store}>
@@ -39,7 +39,7 @@ describe('LeftTop: displaying badges dynamically', () => {
 
 describe('LeftMiddle: rendering "about" & "duringYourStay" info from user', () => {
     test('should pass about information as props and render', () => {
-        store.dispatch(setHostedByState(mockData[0].hostedBy));
+        store.dispatch(setHostedByState(mockData[0]));
 
         const { getByText } = render(
             <Provider store={store}>
@@ -52,7 +52,7 @@ describe('LeftMiddle: rendering "about" & "duringYourStay" info from user', () =
     });
 
     test('should only show "read more" button if text is more than 29 words', () => {
-        store.dispatch(setHostedByState(mockData[1].hostedBy));
+        store.dispatch(setHostedByState(mockData[1]));
 
         const { getAllByRole } = render(
             <Provider store={store}>
@@ -65,7 +65,7 @@ describe('LeftMiddle: rendering "about" & "duringYourStay" info from user', () =
     });
 
     test('"read more" button should disappear and show more text on click', () => {
-        store.dispatch(setHostedByState(mockData[1].hostedBy));
+        store.dispatch(setHostedByState(mockData[1]));
 
         const { getByText, getAllByRole, queryByText } = render(
             <Provider store={store}>
@@ -74,7 +74,7 @@ describe('LeftMiddle: rendering "about" & "duringYourStay" info from user', () =
         );
 
         const readMoreBtn = getAllByRole('button', { name: 'read more' })[0];
-        const about = mockData[1].hostedBy.Host.about;
+        const about = mockData[1].Host.about;
 
         expect(readMoreBtn).toBeInTheDocument();
         expect(queryByText(about)).not.toBeInTheDocument();
@@ -86,7 +86,7 @@ describe('LeftMiddle: rendering "about" & "duringYourStay" info from user', () =
     });
 
     test('"read more" button should show full description of "during your stay" section', () => {
-        store.dispatch(setHostedByState(mockData[1].hostedBy));
+        store.dispatch(setHostedByState(mockData[1]));
 
         const { getByText, getAllByRole, queryByText } = render(
             <Provider store={store}>
@@ -95,7 +95,7 @@ describe('LeftMiddle: rendering "about" & "duringYourStay" info from user', () =
         );
 
         const readMoreBtn = getAllByRole('button', { name: 'read more' })[1];
-        const duringYourStay = mockData[1].hostedBy.duringYourStay;
+        const duringYourStay = mockData[1].duringYourStay;
 
         expect(readMoreBtn).toBeInTheDocument();
         expect(queryByText(duringYourStay)).not.toBeInTheDocument();
@@ -109,7 +109,7 @@ describe('LeftMiddle: rendering "about" & "duringYourStay" info from user', () =
 
 describe('LeftMidde: Superhost conditional rendering', () => {
     test('should display Superhost description when host is a Superhost', () => {
-        store.dispatch(setHostedByState(mockData[0].hostedBy));
+        store.dispatch(setHostedByState(mockData[0]));
 
         const { getByText } = render(
             <Provider store={store}>
@@ -121,7 +121,7 @@ describe('LeftMidde: Superhost conditional rendering', () => {
     });
 
     test('should NOT display Superhost description when host is a Superhost', () => {
-        store.dispatch(setHostedByState(mockData[1].hostedBy));
+        store.dispatch(setHostedByState(mockData[1]));
 
         const { queryByText } = render(
             <Provider store={store}>

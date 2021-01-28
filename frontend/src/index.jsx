@@ -1,15 +1,15 @@
 import React from 'react';
+import App from './App';
 import ReactDOM from 'react-dom';
-import App from './App.jsx';
-import { store } from './redux/store';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-// import './index.css';
+import { store } from './redux/store';
+// import './index.css'; -> development only or figure out global css
 
 ReactDOM.render(
     <Router>
         <Provider store={store}>
-            <Route exact path={'/rooms/:id'} component={App} />
+            <Route exact path="/rooms/:id" component={App} />
         </Provider>
     </Router>,
     document.getElementById('hostedby')
