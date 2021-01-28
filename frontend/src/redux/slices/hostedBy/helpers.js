@@ -1,7 +1,6 @@
 import axios from 'axios';
 
 export const getHostedByData = async function (id) {
-    const res = await axios.get(`/api/hostedbyService/${id}`);
-
-    return res.data;
+    const { data } = await axios.get(`/api/hostedbyService/${id}`);
+    return data;
 };

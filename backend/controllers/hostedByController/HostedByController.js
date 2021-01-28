@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const responses = require('../../constants/routeResponses');
+const client = require('redis').createClient();
 const HostedBy = require('../../models/HostedBy');
 const Host = require('../../models/Host');
 const CoHost = require('../../models/Cohost');
@@ -7,9 +8,10 @@ const Language = require('../../models/Language');
 const HostLanguage = require('../../models/HostLanguage');
 
 router.get('/:propertyId', async (req, res) => {
+    const { propertyId } = req.params;
     try {
         const hostedBy = await HostedBy.findOne({
-            where: { PropertyId: +req.params.propertyId },
+            where: { PropertyId: propertyId },
             include: [
                 {
                     model: Host,
@@ -41,7 +43,8 @@ router.get('/:propertyId', async (req, res) => {
         if (!hostedBy)
             return res.status(404).json({ message: responses.notFound });
 
-        return res.status(200).json({ hostedBy });
+        client.setex(`hostedby${propertyId}`, 3600, JSON.stringify(hostedBy));
+        return res.status(200).json(hostedBy);
     } catch (error) {
         return res.status(500).json({ message: responses.serverError });
     }

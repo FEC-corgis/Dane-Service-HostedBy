@@ -52,7 +52,7 @@ export const handleGetHostedByData = (id) => async (dispatch) => {
         const { hostedBy } = await getHostedByData(id);
         dispatch(setHostedByState(hostedBy));
     } catch (error) {
-        console.log('ERROR GETTING DATA');
+        console.log('ERROR GETTING DATA', error);
     }
 };
 
