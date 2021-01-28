@@ -6,7 +6,7 @@ module.exports = {
     entry: {
         hostedBy: path.resolve(__dirname, 'frontend', 'src', 'index.jsx'),
     },
-    mode: 'production',
+    mode: 'development',
     output: {
         path: path.resolve(__dirname, 'frontend', 'dist'),
         filename: '[name].bundle.js',
@@ -52,10 +52,4 @@ module.exports = {
         extensions: ['.js', '.jsx'],
     },
     devtool: 'source-map',
-    optimization: {
-        splitChunks: {
-            name: 'common',
-            chunks: 'all',
-        },
-    },
 };
