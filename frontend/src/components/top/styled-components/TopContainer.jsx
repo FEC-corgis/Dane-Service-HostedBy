@@ -11,5 +11,6 @@ export default styled(FlexStart)`
         flex-direction: row-reverse;
         justify-content: space-between;
         margin-bottom: 0px;
+        padding-top: 32px;
     }
 `;

@@ -10,6 +10,6 @@ export default styled.section`
     }
 
     @media (max-width: 743px) {
-        padding: 32px 24px;
+        padding: 0 24px;
     }
 `;
