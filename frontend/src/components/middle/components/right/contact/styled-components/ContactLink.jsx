@@ -20,4 +20,8 @@ export default styled.a`
         background-color: rgb(247, 247, 247);
         border-color: rgb(0, 0, 0);
     }
+
+    @media (max-width: 743px) {
+        width: 100%;
+    }
 `;

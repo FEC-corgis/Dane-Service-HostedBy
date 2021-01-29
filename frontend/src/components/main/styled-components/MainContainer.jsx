@@ -8,4 +8,8 @@ export default styled.section`
     @media (max-width: 1128px) {
         padding: 48px 40px;
     }
+
+    @media (max-width: 743px) {
+        padding: 32px 24px;
+    }
 `;

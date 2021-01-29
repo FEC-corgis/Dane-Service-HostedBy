@@ -10,5 +10,6 @@ export default styled(FlexStart)`
     @media (max-width: 743px) {
         flex-direction: row-reverse;
         justify-content: space-between;
+        margin-bottom: 0px;
     }
 `;

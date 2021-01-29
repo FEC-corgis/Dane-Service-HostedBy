@@ -30,13 +30,13 @@ const hostedBySlice = createSlice({
                 responseRate: action.payload.responseRate,
                 host: {
                     name: action.payload.Host.name,
+                    languages: action.payload.Host.HostLanguages,
                     about: action.payload.Host.about,
                     numberOfReviews: action.payload.Host.numberOfReviews,
                     identityVerified: action.payload.Host.identityVerified,
                     isSuperhost: action.payload.Host.isSuperhost,
                     avatar: action.payload.Host.avatar,
                     joinedOn: action.payload.Host.joinedOn,
-                    languages: action.payload.Host.languages,
                 },
                 coHosts: action.payload.CoHosts,
             };
