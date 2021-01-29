@@ -8,7 +8,7 @@ import { AiTwotoneStar } from 'react-icons/ai';
 const LeftTop = ({ host }) => (
     <LeftTopContainer>
         {host.numberOfReviews && (
-            <Badge first={true}>
+            <Badge>
                 <AiTwotoneStar className={'icon2'} />
                 <span className={'font'}>{host.numberOfReviews} Reviews</span>
             </Badge>

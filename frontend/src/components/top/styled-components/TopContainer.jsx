@@ -6,4 +6,9 @@ export default styled(FlexStart)`
     padding-top: 48px;
     margin-bottom: 24px;
     align-items: center;
+
+    @media (max-width: 743px) {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+    }
 `;
