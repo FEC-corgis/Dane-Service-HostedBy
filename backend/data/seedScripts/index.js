@@ -7,13 +7,19 @@ const connection = mysql.createConnection({
 });
 
 (async function () {
-    await connection.promise().execute('DROP DATABASE IF EXISTS `HostedBy`');
-    await connection.promise().execute('CREATE DATABASE `HostedBy`');
-    connection.destroy();
+    try {
+        await connection
+            .promise()
+            .execute('DROP DATABASE IF EXISTS `HostedBy`');
+        await connection.promise().execute('CREATE DATABASE `HostedBy`');
+        connection.destroy();
 
-    await require('./HostSeed');
-    await require('./CoHostSeed');
-    await require('./LanguageSeed');
-    await require('./HostLanguageSeed');
-    await require('./HostedBySeed');
+        await require('./HostSeed');
+        await require('./CoHostSeed');
+        await require('./LanguageSeed');
+        await require('./HostLanguageSeed');
+        await require('./HostedBySeed');
+    } catch (error) {
+        console.log('ERROR IN SEEDING SCRIPT', error);
+    }
 })();
