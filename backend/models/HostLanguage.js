@@ -1,24 +1,24 @@
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../data/db');
 
-class CoHost extends Model {}
+class HostLanguage extends Model {}
 
-CoHost.init(
+HostLanguage.init(
     {
         HostId: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
-        HostedById: {
+        LanguageId: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
     },
     {
         sequelize,
-        modelName: 'CoHost',
+        modelName: 'HostLanguage',
         timestamps: false,
     }
 );
 
-module.exports = CoHost;
+module.exports = HostLanguage;
