@@ -33,3 +33,17 @@ describe('dispatching received data to redux store on render', () => {
         }, 1500);
     });
 });
+
+describe('passing props to Top component', () => {
+    test('should pass props to Top component and display them', async () => {
+        const { findByText, findByRole } = render(
+            <Provider store={store}>
+                <App match={{ params: { id: 85 } }} />
+            </Provider>
+        );
+
+        expect(await findByText('Hosted by Avery')).toBeInTheDocument();
+        expect(await findByText('Joined in January 2021')).toBeInTheDocument();
+        expect(await findByRole('img', { name: 'host' })).toBeInTheDocument();
+    });
+});

@@ -1,4 +1,4 @@
-export default [
+export const mockData = [
     {
         hostedBy: {
             id: 85,
