@@ -3,11 +3,13 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-    entry: path.resolve(__dirname, 'frontend', 'src', 'index.jsx'),
+    entry: {
+        hostedBy: path.resolve(__dirname, 'frontend', 'src', 'index.jsx'),
+    },
     mode: 'development',
     output: {
         path: path.resolve(__dirname, 'frontend', 'dist'),
-        filename: 'bundle.js',
+        filename: '[name].bundle.js',
         publicPath: '/',
     },
     module: {

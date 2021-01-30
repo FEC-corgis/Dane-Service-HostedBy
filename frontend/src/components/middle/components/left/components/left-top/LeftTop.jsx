@@ -9,13 +9,13 @@ const LeftTop = ({ host }) => (
     <LeftTopContainer>
         {host.numberOfReviews && (
             <Badge first={true}>
-                <AiTwotoneStar className={'icon'} />
+                <AiTwotoneStar className={'icon2'} />
                 <span className={'font'}>{host.numberOfReviews} Reviews</span>
             </Badge>
         )}
         {host.identityVerified && (
             <Badge>
-                <MdVerifiedUser className={'icon'} />
+                <MdVerifiedUser className={'icon2'} />
                 <span className={'font'}>Identity verified</span>
             </Badge>
         )}
