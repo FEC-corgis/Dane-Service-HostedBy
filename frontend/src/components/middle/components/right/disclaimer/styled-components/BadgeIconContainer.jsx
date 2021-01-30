@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
 export default styled.div`
-    max-width: 476.66px;
+    margin-right: 16px;
 `;
