@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import Main from './components/main/Main';
 import Top from './components/top/Top';
+import Middle from './components/middle/Middle';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     getHostedByState,
@@ -19,6 +20,7 @@ const App = ({ match: { params } }) => {
         host.name && (
             <Main>
                 <Top host={host} />
+                <Middle />
             </Main>
         )
     );
