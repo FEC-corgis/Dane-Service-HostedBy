@@ -6,6 +6,7 @@ export default styled(FlexStart)`
     padding-top: 48px;
     margin-bottom: 24px;
     align-items: center;
+    border-top: 1px solid rgb(221, 221, 221);
 
     @media (max-width: 743px) {
         flex-direction: row-reverse;
