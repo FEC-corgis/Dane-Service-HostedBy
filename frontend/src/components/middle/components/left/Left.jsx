@@ -6,7 +6,8 @@ import { useSelector } from 'react-redux';
 import { getHostedByState } from '../../../../redux/slices/hostedBy/hostedBySlice';
 
 const Left = () => {
-    const { host, duringYourStay } = useSelector(getHostedByState);
+    const hostedBy = useSelector(getHostedByState);
+    const { host, duringYourStay, coHosts } = hostedBy;
     return (
         <LeftBox>
             <LeftTop host={host} />
@@ -15,6 +16,7 @@ const Left = () => {
                 duringYourStay={duringYourStay}
                 isSuperhost={host.isSuperhost}
                 name={host.name}
+                cohosts={coHosts}
             />
         </LeftBox>
     );
