@@ -7,7 +7,7 @@ import { mockData } from '../../../../../mocks/mockData';
 import { Provider } from 'react-redux';
 
 test('should dynamically render response time and response rate from the store', () => {
-    store.dispatch(setHostedByState(mockData[0].hostedBy));
+    store.dispatch(setHostedByState(mockData[0]));
     const { getByText } = render(
         <Provider store={store}>
             <Right />
@@ -19,7 +19,7 @@ test('should dynamically render response time and response rate from the store',
 });
 
 test('should render "within a day" if the response time of the host is less than 24 hours', () => {
-    store.dispatch(setHostedByState(mockData[1].hostedBy));
+    store.dispatch(setHostedByState(mockData[1]));
     const { getByText } = render(
         <Provider store={store}>
             <Right />

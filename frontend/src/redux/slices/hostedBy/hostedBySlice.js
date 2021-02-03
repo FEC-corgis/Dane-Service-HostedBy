@@ -49,10 +49,10 @@ export const getHostedByState = (state) => state.hostedBy;
 
 export const handleGetHostedByData = (id) => async (dispatch) => {
     try {
-        const { hostedBy } = await getHostedByData(id);
+        const hostedBy = await getHostedByData(id);
         dispatch(setHostedByState(hostedBy));
     } catch (error) {
-        console.log('ERROR GETTING DATA');
+        console.log('ERROR GETTING DATA', error);
     }
 };
 
