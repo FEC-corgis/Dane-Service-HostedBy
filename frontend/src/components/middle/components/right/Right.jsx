@@ -7,11 +7,15 @@ import { useSelector } from 'react-redux';
 import { getHostedByState } from '../../../../redux/slices/hostedBy/hostedBySlice';
 
 const Right = () => {
-    const { responseTime, responseRate } = useSelector(getHostedByState);
+    const { responseTime, responseRate, host } = useSelector(getHostedByState);
 
     return (
         <RightBox>
-            <ResponseInfo time={responseTime} rate={responseRate} />
+            <ResponseInfo
+                time={responseTime}
+                rate={responseRate}
+                languages={host.languages}
+            />
             <ContactButton />
             <Disclaimer />
         </RightBox>

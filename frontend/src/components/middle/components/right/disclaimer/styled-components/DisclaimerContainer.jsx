@@ -8,4 +8,10 @@ export default styled(Flex)`
     line-height: 16px;
     font-weight: 400;
     align-items: center;
+
+    @media (max-width: 743px) {
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        max-width: 100%;
+    }
 `;

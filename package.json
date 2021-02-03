@@ -3,12 +3,13 @@
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
+    "proxy": "http://localhost:5000",
     "scripts": {
         "test": "jest --detectOpenHandles --watchAll",
         "start": "webpack serve",
         "build": "webpack",
         "watch": "webpack -w",
-        "server": "nodemon backend/serverStart.js",
+        "server": "pm2 start backend/serverStart.js --watch --name hostedby",
         "seed": "node backend/data/seedScripts"
     },
     "keywords": [],

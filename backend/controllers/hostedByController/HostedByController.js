@@ -50,4 +50,19 @@ router.get('/:propertyId', async (req, res) => {
     }
 });
 
+router.get('/superhost/:id', async (req, res) => {
+    try {
+        const host = await Host.findByPk(req.params.id);
+
+        if (!host)
+            return res
+                .status(404)
+                .json({ message: 'No host found for this property' });
+
+        return res.status(200).send(host.isSuperhost);
+    } catch (error) {
+        return res.status(500).json({ message: responses.serverError });
+    }
+});
+
 module.exports = router;
