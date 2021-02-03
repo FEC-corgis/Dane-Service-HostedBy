@@ -2,6 +2,12 @@ const { Host } = require('../../models');
 const { names } = require('../mock/Names');
 const { abouts, long } = require('../mock/About');
 
+function randomDate(start, end) {
+    return new Date(
+        start.getTime() + Math.random() * (end.getTime() - start.getTime())
+    );
+}
+
 module.exports = (async function () {
     await Host.sync({ force: true });
 
@@ -17,7 +23,10 @@ module.exports = (async function () {
                 Math.floor(Math.random() * 2) === 0 ? true : false,
             isSuperhost: Math.floor(Math.random() * 2) === 0 ? true : false,
             avatar: `https://randomuser.me/api/portraits/${sex}/${picId}.jpg`,
-            joinedOn: new Date().toDateString(),
+            joinedOn: randomDate(
+                new Date(2012, 0, 1),
+                new Date()
+            ).toDateString(),
         });
     }
 })();
