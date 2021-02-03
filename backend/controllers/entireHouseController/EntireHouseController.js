@@ -1,15 +1,17 @@
 const router = require('express').Router();
 const responses = require('../../constants/routeResponses');
-const Host = require('../../models/Host');
+const EntireHouseRepository = require('../../repositories/EntireHouseRepo');
 
-router.get('/entire-house/:hostId', async (req, res) => {
+router.get('/entire-house/:propertyId', async (req, res) => {
+    const { propertyId } = req.params;
+    const repo = new EntireHouseRepository(propertyId);
     try {
-        const host = await Host.findByPk(+req.params.hostId);
+        const hostInfo = await repo.getData();
 
-        if (!host)
-            return res.status(404).json({ message: responses.hostNotFound });
+        if (!hostInfo)
+            return res.status(404).json({ message: responses.entireHouse });
 
-        const { name, avatar, isSuperhost } = host;
+        const { name, avatar, isSuperhost } = hostInfo;
         return res.status(200).json({ name, avatar, isSuperhost });
     } catch (error) {
         return res.status(500).json({ message: responses.serverError });
