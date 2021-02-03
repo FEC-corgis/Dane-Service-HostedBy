@@ -14,7 +14,7 @@ router.get('/:propertyId', async (req, res) => {
 
         return res.status(200).json(hostedBy);
     } catch (error) {
-        return res.status(500).json({ message: responses.serverError });
+        return res.status(500).json(new Response(responses.serverError));
     }
 });
 
@@ -23,11 +23,11 @@ router.get('/superhost/:id', async (req, res) => {
         const host = await Host.findByPk(req.params.id);
 
         if (!host)
-            return res.status(404).json({ message: responses.hostNotFound });
+            return res.status(404).json(new Response(responses.hostNotFound));
 
         return res.status(200).send(host.isSuperhost);
     } catch (error) {
-        return res.status(500).json({ message: responses.serverError });
+        return res.status(500).json(new Response(responses.serverError));
     }
 });
 
