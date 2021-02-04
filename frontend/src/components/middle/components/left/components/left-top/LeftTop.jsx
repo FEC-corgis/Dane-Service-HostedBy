@@ -20,7 +20,7 @@ const LeftTop = ({ host }) => (
             </Badge>
         )}
         {host.isSuperhost && (
-            <Badge>
+            <Badge move={true}>
                 <SuperHost />
                 <span className={'font'}>Superhost</span>
             </Badge>
