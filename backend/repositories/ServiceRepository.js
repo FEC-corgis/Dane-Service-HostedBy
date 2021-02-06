@@ -42,7 +42,11 @@ module.exports = class ServiceRepository {
             ],
         });
 
-        this.data = hostedBy;
+        if (hostedBy) {
+            this.data = hostedBy;
+        } else {
+            throw new Error();
+        }
     }
 
     async getData() {

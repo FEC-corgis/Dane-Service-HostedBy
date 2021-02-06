@@ -9,6 +9,7 @@ router.get('/:propertyId', async (req, res) => {
     const repo = new ServiceRepository(propertyId);
     try {
         const hostedBy = await repo.getData();
+
         if (!repo.dataLoaded)
             return res.status(404).json(new Response(responses.notFound));
 
