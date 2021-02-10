@@ -14,7 +14,7 @@ app.use(express.json());
 app.use('/api/hostedbyService', hostedByRoutes);
 app.use('/api/hostedbyService', entireHouseRoutes);
 
-app.get('*', (req, res) => {
+app.get('*', (_req, res) => {
     res.sendFile(publicPath);
 });
 
