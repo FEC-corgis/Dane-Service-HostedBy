@@ -1,3 +1,4 @@
+const fallbackData = require('../data/fallbackData');
 const Host = require('../models/Host');
 const CoHost = require('../models/Cohost');
 const HostedBy = require('../models/HostedBy');
@@ -7,54 +8,53 @@ const HostLanguage = require('../models/HostLanguage');
 module.exports = class ServiceRepository {
     constructor(id) {
         this.id = id;
-        this.dataLoaded = true;
         this.data = {};
     }
 
     async getHostedByInfo() {
-        const hostedBy = await HostedBy.findOne({
-            where: { PropertyId: this.id },
-            include: [
-                {
-                    model: Host,
-                    include: [
-                        {
-                            model: HostLanguage,
-                            attributes: ['LanguageId'],
-                            include: [
-                                {
-                                    model: Language,
-                                    attributes: ['name'],
-                                },
-                            ],
-                        },
-                    ],
-                },
-                {
-                    model: CoHost,
-                    include: [
-                        {
-                            model: Host,
-                            attributes: ['name', 'avatar'],
-                        },
-                    ],
-                },
-            ],
-        });
+        try {
+            const hostedBy = await HostedBy.findOne({
+                where: { PropertyId: this.id },
+                include: [
+                    {
+                        model: Host,
+                        include: [
+                            {
+                                model: HostLanguage,
+                                attributes: ['LanguageId'],
+                                include: [
+                                    {
+                                        model: Language,
+                                        attributes: ['name'],
+                                    },
+                                ],
+                            },
+                        ],
+                    },
+                    {
+                        model: CoHost,
+                        include: [
+                            {
+                                model: Host,
+                                attributes: ['name', 'avatar'],
+                            },
+                        ],
+                    },
+                ],
+            });
 
-        if (hostedBy) {
-            this.data = hostedBy;
-        } else {
-            throw new Error();
+            if (hostedBy) {
+                this.data = hostedBy;
+            } else {
+                throw new Error();
+            }
+        } catch (error) {
+            this.data = fallbackData;
         }
     }
 
     async getData() {
-        try {
-            await this.getHostedByInfo();
-            return this.data;
-        } catch (error) {
-            this.dataLoaded = false;
-        }
+        await this.getHostedByInfo();
+        return this.data;
     }
 };
