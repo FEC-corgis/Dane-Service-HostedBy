@@ -17,11 +17,11 @@ module.exports = class EntireHouseRepository {
             where: { PropertyId: this.id },
         });
 
-        const { name, avatar, isSuperhost } = await Host.findByPk(HostId);
+        const { dataValues } = await Host.findByPk(HostId, {
+            attributes: ['name', 'avatar', 'isSuperhost'],
+        });
 
-        this.data.name = name;
-        this.data.avatar = avatar;
-        this.data.isSuperhost = isSuperhost;
+        this.data = { ...dataValues };
     }
 
     async getData() {

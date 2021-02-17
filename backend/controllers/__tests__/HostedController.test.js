@@ -1,10 +1,9 @@
 const request = require('supertest');
-const app = require('../../../server');
+const app = require('../../server');
 
-describe('GET /api/hostedby/:propertyIdd', () => {
+describe('GET /api/hostedbyService/:propertyIdd', () => {
     test('should return HostedBy object with Host data', async () => {
         const res = await request(app).get('/api/hostedbyService/1');
-
         expect(res.body.PropertyId).toBe(1);
         expect(res.body.Host.id).toBe(1);
         expect(res.status).toBe(200);
@@ -12,13 +11,11 @@ describe('GET /api/hostedby/:propertyIdd', () => {
 
     test('should include an array of CoHosts', async () => {
         const res = await request(app).get('/api/hostedbyService/1');
-
         expect(res.body.CoHosts.length).toBeGreaterThanOrEqual(0);
     });
 
     test('should include an array of Languages spoken by the host', async () => {
         const res = await request(app).get('/api/hostedbyService/1');
-
         expect(res.body.Host.HostLanguages.length).toBeGreaterThanOrEqual(0);
     });
 
